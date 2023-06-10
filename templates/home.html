@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Patient Feedback</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      margin: 20px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #welcome {
+      font-weight: bold;
+      margin-right: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      resize: vertical;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Styles for the pop-up */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      z-index: 9999;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div id="welcome"></div>
+      <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </div>
+    <!--<img id="profile-picture" src="" alt="Profile Picture" style="width: 100px; height: 100px; margin-bottom: 10px;">-->
+    <h1>Patient Feedback</h1><br><br>
+    <form id="feedback-form">
+      <table>
+        <tr>
+          <td>
+            <label for="name">Name:</label>
+          </td>
+          <td>
+            <input type="text" id="name" name="name" required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="age">Age:</label>
+          </td>
+          <td>
+            <input type="number" id="age" name="age" required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="gender">Gender:</label>
+          </td>
+          <td>
+            <select id="gender" name="gender" required>
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="disease-effect">Disease Effect:</label>
+          </td>
+          <td>
+            <textarea id="disease-effect" name="disease-effect" required></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="symptoms">Symptoms:</label>
+          </td>
+          <td>
+            <textarea id="symptoms" name="symptoms" required></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="precautions">Precautions/Medicine:</label>
+          </td>
+          <td>
+            <textarea id="precautions" name="precautions" required></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="Course_duration">Course_Duration:</label>
+          </td>
+          <td>
+            <textarea id="Course_duration" name="Course_duration" required></textarea>
+          </td>
+        </tr>
+        <tr>
+          <!---- <td>
+            <label for="profile-picture-upload">Profile Picture:</label>
+          </td>
+          <td>
+            <input type="file" id="profile-picture-upload" name="profile-picture-upload" onchange="previewProfilePicture(event)">
+          </td>-->
+        </tr>
+      </table>
+    </form>
+    <div class="button-container">
+      <button type="submit" form="feedback-form">Submit Feedback</button><br><br>
+    </div>
+  </div>
+
+  <script>
+    const feedbackForm = document.getElementById('feedback-form');
+    const feedbackTable = document.createElement('table');
+    const welcomeDiv = document.getElementById('welcome');
+    const profilePictureInput = document.getElementById('profile-picture-upload');
+    const profilePicturePreview = document.getElementById('profile-picture');
+
+    // Submit feedback event
+    feedbackForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      
+      // Create new row
+      const newRow = document.createElement('tr');
+
+      // Extract values from form inputs
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+      const diseaseEffect = document.getElementById('disease-effect').value;
+      const symptoms = document.getElementById('symptoms').value;
+      const precautions = document.getElementById('precautions').value;
+      const Course_duration = document.getElementById('Course_duration').value;
+
+      // Create new cells
+      const nameCell = document.createElement('td');
+      nameCell.textContent = name;
+
+      const ageCell = document.createElement('td');
+      ageCell.textContent = age;
+
+      const genderCell = document.createElement('td');
+      genderCell.textContent = gender;
+
+      const diseaseEffectCell = document.createElement('td');
+      diseaseEffectCell.textContent = diseaseEffect;
+
+      const symptomsCell = document.createElement('td');
+      symptomsCell.textContent = symptoms;
+
+      const precautionsCell = document.createElement('td');
+      precautionsCell.textContent = precautions;
+
+      const Course_durationCell = document.createElement('td');
+      Course_durationCell.textContent = Course_duration;
+
+      // Append cells to the row
+      newRow.appendChild(nameCell);
+      newRow.appendChild(ageCell);
+      newRow.appendChild(genderCell);
+      newRow.appendChild(diseaseEffectCell);
+      newRow.appendChild(symptomsCell);
+      newRow.appendChild(precautionsCell);
+      newRow.appendChild(Course_durationCell);
+
+      // Append the new row to the feedback table
+      feedbackTable.appendChild(newRow);
+
+      // Clear form inputs
+      feedbackForm.reset();
+    
+
+    // Show pop-up notification
+    const popup = document.createElement('div');
+    popup.classList.add('popup');
+    popup.textContent = 'Your feedback has been successfully submitted!';
+    document.body.appendChild(popup);
+
+    // Remove pop-up after 3 seconds
+    setTimeout(() => {
+      document.body.removeChild(popup);
+    }, 3000);
+  });
+
+    // Logout function
+    
+
+    // Preview profile picture
+    function previewProfilePicture(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        profilePicturePreview.src = e.target.result;
+      }
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Set welcome patient name
+    const patientName = " Welcome"; // Replace with actual patient name 
+    welcomeDiv.textContent = "Hi Dear, " + patientName + " ";
+
+    // Render feedback table
+    const container = document.querySelector('.container');
+    container.appendChild(feedbackTable);
+  </script>
+</body>
+</html>
+ 

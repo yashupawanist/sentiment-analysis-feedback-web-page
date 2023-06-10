@@ -1,0 +1,248 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%), url(\"drug.jpg"); 
+    padding-top: 30px;
+    background-position: right ;
+    background-size: cover;
+    height: 109vh;
+}
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+.logo{
+    color: rgb(24, 24, 24);
+    font-size: 30px;
+    font-family: 'Times New Roman';
+    padding-left: 100px;
+    float: left;
+    padding-top: 30px;
+display: flex;
+        padding: 5px;
+      
+     
+      
+}
+.menu li {
+    border: 1px solid black;
+    padding: 5px;
+   border-style: double;
+   border-radius: 10px;
+  
+  }
+  
+menu{
+    width: 400px;
+    float: left;
+    height: 70px;
+
+}
+
+ul{
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 102px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-family: 'Times New Roman';
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+ul li a:hover{
+    color: #ff7200;
+}
+.line {
+    border-top: 10px solid #333; /* Dark border color */
+    margin: 0px 0; /* Adds some space above and below the line */
+  }
+.content{
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: #080808;
+    position: relative;
+}
+.line {
+    
+    border-top: 10px solid #333; /* Dark border color */
+    margin: 0px 0; /* Adds some space above and below the line */
+    
+  }
+  
+h1 {
+    float: left;
+    margin-top: 10%;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-right: 50px;
+    padding-inline: 0%;
+  }
+  
+
+  .par{
+    padding-left: px;
+    padding-bottom: 25px;
+    font-family: 'Times New Roman';
+    letter-spacing: 1.2px;
+    line-height: 30px
+}
+
+.content h1{
+    font-family: 'Times New Roman';
+    font-size: 50px;
+    padding-left: 20px;
+    margin-top: 9%;
+    letter-spacing: 2px;
+}
+
+.content .cn{
+    width: 160px;
+    height: 40px;
+    background-color:rgb(29, 27, 27);
+    border: none;
+    
+    margin-bottom: 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+.content .cn a{
+    text-decoration: none;
+    color: #f5f5f9;
+    transition: .3s ease;
+}
+
+.cn:hover{
+    background-color: #9e571c ;
+}
+
+.content span{
+    color: #ff7200;
+    font-size: 60px;
+}
+.Project-image {
+    padding-left: 10%;
+    display: auto;
+    margin: auto;
+  }
+  .photography-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 50px;
+  }
+
+  .photography-image {
+    flex: 10;
+    max-width: 400px;
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+
+  .photography-description {
+    flex: 1;
+    max-width: 400px;
+    margin: 10px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+
+  .photography-title {
+    
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    float: right;
+  }
+ 
+  .photography-info {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .photography-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #0077cc;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+
+  .photography-link:hover {
+    background-color: #005fa3;
+  }
+  .image-text-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  
+  .image-text-container img {
+    width: 80%;
+    margin-right: 20px;
+  }
+  
+  .image-text-container p {
+    font-size: 20px;
+    text-align: justify;
+    line-height: 1.5;
+  }
+  .text {
+    padding-left: 50%;
+    font-family: 'Times New Roman';
+    letter-spacing: 1.2px;
+    line-height: 30px
+}
+
+  .text {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .footer {
+    border-top: 1px solid #ccc;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+  }
+  .developer {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 12px;
+  }
